@@ -21,15 +21,34 @@ async function getUsers(req, res) {
     }
 }
 
+async function getUserById(req, res) {
+    try {
+        const { id } = req.params
+
+        const user = await database.getUserById(id)
+        res.status(200).json({
+            isSuccess: true,
+            messages: [],
+            data: user
+        })
+    } catch (err) {
+        res.status(500).json({
+            isSuccess: false,
+            messages: [
+                err
+            ],
+            data: []
+        })
+    }
+}
+
 async function createUser(req, res) {
     try {
         const newUser = await database.createUser(req.body)
         res.status(201).json({
             isSuccess: true,
             messages: [],
-            data: [
-                newUser
-            ]
+            data: newUser
         })
     } catch (err) {
         res.status(500).json({
@@ -50,9 +69,7 @@ async function updateUser(req, res) {
         res.status(200).json({
             isSuccess: true,
             messages: [],
-            data: [
-                updateUser
-            ]
+            data: updatedUser
         })
     } catch (err) {
         res.status(500).json({
@@ -67,6 +84,7 @@ async function updateUser(req, res) {
 
 module.exports = {
     getUsers,
+    getUserById,
     createUser,
     updateUser
 }

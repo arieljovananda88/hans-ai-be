@@ -3,6 +3,7 @@ const usersRouter = express.Router()
 const usersController = require('./internal/controller')
 
 usersRouter.get('/', usersController.getUsers)
+usersRouter.get('/:id', usersController.getUserById)
 usersRouter.post('/', usersController.createUser)
 usersRouter.patch('/:id', usersController.updateUser)
 
