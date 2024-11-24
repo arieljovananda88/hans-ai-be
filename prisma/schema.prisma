@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,77 +8,75 @@ datasource db {
 }
 
 model HealthCheck {
-  id                    Int @id @default(autoincrement())
-  Message               String
+  id      Int    @id @default(autoincrement())
+  Message String
 }
 
 model Users {
-  id                    String @id @default(uuid())
-  displayName           String
-  email                 String @unique
-  password              String
-  dietaryPreferences    String
-  allergies             String
-
-  PantryItems PantryItems[]
-  NutritionPlans NutritionPlans[]
-  MealLogs MealLogs[]
-  WeightLogs WeightLogs[]
-  GeneratedRecipes GeneratedRecipes[]
+  id                 String             @id @default(uuid())
+  displayName        String
+  email              String             @unique
+  password           String
+  dietaryPreferences String
+  allergies          String
+  GeneratedRecipes   GeneratedRecipes[]
+  MealLogs           MealLogs[]
+  NutritionPlans     NutritionPlans[]
+  PantryItems        PantryItems[]
+  WeightLogs         WeightLogs[]
 }
 
 model PantryItems {
-  id                    String @id @default(uuid())
-  userId                String
-  user                  Users @relation(fields: [userId], references: [id])
-  itemName              String
-  quantity              Int
-  experationDate        DateTime
+  id             String   @id @default(uuid())
+  userId         String
+  itemName       String
+  quantity       Int
+  experationDate DateTime
+  user           Users    @relation(fields: [userId], references: [id])
 }
 
 model NutritionPlans {
-  id                    String @id @default(uuid())
-  userId                String
-  user                  Users @relation(fields: [userId], references: [id])
-  caloriesGoal          Float
-  startDate             DateTime
-  endDate               DateTime
-
+  id               String             @id @default(uuid())
+  userId           String
+  caloriesGoal     Float
+  startDate        DateTime
+  endDate          DateTime
   GeneratedRecipes GeneratedRecipes[]
+  user             Users              @relation(fields: [userId], references: [id])
 }
 
-model MealLogs{
-  id                    String @id @default(uuid())
-  userId                String
-  user                  Users @relation(fields: [userId], references: [id])
-  date                  DateTime
-  mealType              String
-  calories              Float
+model MealLogs {
+  id       String   @id @default(uuid())
+  userId   String
+  date     DateTime
+  mealType String
+  calories Float
+  user     Users    @relation(fields: [userId], references: [id])
 }
 
 model WeightLogs {
-  id                    String @id @default(uuid())
-  userId                String
-  user                  Users @relation(fields: [userId], references: [id])
-  date                  DateTime
-  weight                Float
+  id     String   @id @default(uuid())
+  userId String
+  date   DateTime
+  weight Float
+  user   Users    @relation(fields: [userId], references: [id])
 }
 
 model GeneratedRecipes {
-  id                    String @id @default(uuid())
+  id                    String         @id @default(uuid())
   userId                String
-  user                  Users @relation(fields: [userId], references: [id])
   recipeId              String
-  recipe                NutritionPlans @relation(fields: [recipeId], references: [id])
   generatedDate         DateTime
   ingredientAdjustments String
+  recipe                NutritionPlans @relation(fields: [recipeId], references: [id])
+  user                  Users          @relation(fields: [userId], references: [id])
 }
 
 model Recipes {
-  id                    String @id @default(uuid())
-  name                  String
-  ingredients           String
-  instructions          String
-  calories              Float
-  dietaryTags           String
+  id           String @id @default(uuid())
+  name         String
+  ingredients  String
+  instructions String
+  calories     Float
+  dietaryTags  String
 }
