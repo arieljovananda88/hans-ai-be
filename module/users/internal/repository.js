@@ -19,7 +19,26 @@ async function createUser(user) {
             data: user
         })
 
-        return newUser
+        return {
+            id: newUser.id
+        }
+    } catch (err) {
+        console.error('Error unable to add user:', err)
+        throw err
+    }
+}
+
+async function updateUser(id, user) {
+    try {
+        await prismaClient.users.update({
+            where: {
+                id: id
+            },
+            data: user
+        })
+        return {
+            id: id
+        }
     } catch (err) {
         console.error('Error unable to add user:', err)
         throw err
@@ -28,5 +47,6 @@ async function createUser(user) {
 
 module.exports = {
     getAllUsers,
-    createUser
+    createUser,
+    updateUser
 }
