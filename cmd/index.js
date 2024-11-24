@@ -9,6 +9,8 @@ app.use(express.json())
 app.use('/', healthCheckRouter)
 app.use('/users', usersRouter)
 app.use('/pantry-items', pantryItemsRouter)
+app.use('/users', usersRouter)
+app.use('/pantry-items', pantryItemsRouter)
 
 app.listen(3000, () => {
   console.log('Server is listening on port 3000')
