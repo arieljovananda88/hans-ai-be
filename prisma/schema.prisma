@@ -14,6 +14,77 @@ datasource db {
 }
 
 model HealthCheck {
-  id Int @id @default(autoincrement())
-  Message String
+  id                    Int @id @default(autoincrement())
+  Message               String
+}
+
+model Users {
+  id                    String @id @default(uuid())
+  displayName           String
+  email                 String @unique
+  password              String
+  dietaryPreferences    String
+  allergies             String
+
+  PantryItems PantryItems[]
+  NutritionPlans NutritionPlans[]
+  MealLogs MealLogs[]
+  WeightLogs WeightLogs[]
+  GeneratedRecipes GeneratedRecipes[]
+}
+
+model PantryItems {
+  id                    String @id @default(uuid())
+  userId                String
+  user                  Users @relation(fields: [userId], references: [id])
+  itemName              String
+  quantity              Int
+  experationDate        DateTime
+}
+
+model NutritionPlans {
+  id                    String @id @default(uuid())
+  userId                String
+  user                  Users @relation(fields: [userId], references: [id])
+  caloriesGoal          Float
+  startDate             DateTime
+  endDate               DateTime
+
+  GeneratedRecipes GeneratedRecipes[]
+}
+
+model MealLogs{
+  id                    String @id @default(uuid())
+  userId                String
+  user                  Users @relation(fields: [userId], references: [id])
+  date                  DateTime
+  mealType              String
+  calories              Float
+}
+
+model WeightLogs {
+  id                    String @id @default(uuid())
+  userId                String
+  user                  Users @relation(fields: [userId], references: [id])
+  date                  DateTime
+  weight                Float
+}
+
+model GeneratedRecipes {
+  id                    String @id @default(uuid())
+  userId                String
+  user                  Users @relation(fields: [userId], references: [id])
+  recipeId              String
+  recipe                NutritionPlans @relation(fields: [recipeId], references: [id])
+  generatedDate         DateTime
+  ingredientAdjustments String
+}
+
+model Recipes {
+  id                    String @id @default(uuid())
+  name                  String
+  ingredients           String
+  instructions          String
+  calories              Float
+  dietaryTags           String
 }
