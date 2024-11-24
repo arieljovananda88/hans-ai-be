@@ -4,7 +4,6 @@ const app = express()
 const healthCheckRouter = require('../module/health-check/routes')
 const usersRouter = require('../module/users/routes')
 const pantryItemsRouter = require('../module/pantry-items/routes')
-const usersRouter = require('../module/users/routes')
 
 app.use(express.json())
 app.use('/', healthCheckRouter)

@@ -31,7 +31,12 @@ async function getpantryItemById(id) {
 async function createpantryItem(pantryItem) {
     try {
         const newpantryItem = await prismaClient.pantryItems.create({
-            data: pantryItem
+            data: {
+                userId: pantryItem.userId,
+                itemName: pantryItem.itemName,
+                quantity: pantryItem.quantity,
+                experationDate: new Date(pantryItem.experationDate)
+            }
         })
 
         return {
@@ -49,7 +54,12 @@ async function updatepantryItem(id, pantryItem) {
             where: {
                 id: id
             },
-            data: pantryItem
+            data: {
+                userId: pantryItem.userId,
+                itemName: pantryItem.itemName,
+                quantity: pantryItem.quantity,
+                experationDate: new Date(pantryItem.experationDate)
+            }
         })
         return {
             id: id
