@@ -1,13 +1,13 @@
 const database = require('./repository')
 
-async function getPantryItems(req, res) {
+async function getNutritionPlans(req, res) {
     try {
-        const pantryItems = await database.getAllpantryItems()
+        const nutritionPlans = await database.getAllNutritionPlans()
         res.status(200).json({
             isSuccess: true,
             messages: [],
             data: [
-                ...pantryItems
+                ...nutritionPlans
             ]
         })
     } catch (error) {
@@ -21,15 +21,15 @@ async function getPantryItems(req, res) {
     }
 }
 
-async function getPantryItemById(req, res) {
+async function getNutritionPlanById(req, res) {
     try {
         const { id } = req.params
 
-        const pantryItem = await database.getpantryItemById(id)
+        const nutritionPlan = await database.getNutritionPlanById(id)
         res.status(200).json({
             isSuccess: true,
             messages: [],
-            data: pantryItem
+            data: nutritionPlan
         })
     } catch (err) {
         res.status(500).json({
@@ -42,13 +42,13 @@ async function getPantryItemById(req, res) {
     }
 }
 
-async function createPantryItem(req, res) {
+async function createNutritionPlan(req, res) {
     try {
-        const newpantryItem = await database.createpantryItem(req.body)
+        const newnutritionPlan = await database.createNutritionPlan(req.body)
         res.status(201).json({
             isSuccess: true,
             messages: [],
-            data: newpantryItem
+            data: newnutritionPlan
         })
     } catch (err) {
         res.status(500).json({
@@ -61,15 +61,15 @@ async function createPantryItem(req, res) {
     }
 }
 
-async function updatePantryItem(req, res) {
+async function updateNutritionPlan(req, res) {
     try {
         const { id } = req.params
 
-        const updatedPantryItem = await database.updatepantryItem(id, req.body)
+        const updatednutritionPlan = await database.updateNutritionPlan(id, req.body)
         res.status(200).json({
             isSuccess: true,
             messages: [],
-            data: updatedPantryItem
+            data: updatednutritionPlan
         })
     } catch (err) {
         res.status(500).json({
@@ -82,11 +82,11 @@ async function updatePantryItem(req, res) {
     }
 }
 
-async function deletePantryItem(req, res) {
+async function deleteNutritionPlan(req, res) {
     try {
         const { id } = req.params
 
-        await database.deletepantryItem(id)
+        await database.deleteNutritionPlan(id)
         res.status(200).json({
             isSuccess: true,
             messages: [],
@@ -104,9 +104,9 @@ async function deletePantryItem(req, res) {
 }
 
 module.exports = {
-    getPantryItems,
-    getPantryItemById,
-    createPantryItem,
-    updatePantryItem,
-    deletePantryItem
+    getNutritionPlans,
+    getNutritionPlanById,
+    createNutritionPlan,
+    updateNutritionPlan,
+    deleteNutritionPlan
 }
