@@ -82,9 +82,31 @@ async function updateUser(req, res) {
     }
 }
 
+async function deleteUser(req, res) {
+    try {
+        const { id } = req.params
+
+        await database.deleteUser(id)
+        res.status(200).json({
+            isSuccess: true,
+            messages: [],
+            data: []
+        })
+    } catch (err) {
+        res.status(500).json({
+            isSuccess: false,
+            messages: [
+                err
+            ],
+            data: []
+        })
+    }
+}
+
 module.exports = {
     getUsers,
     getUserById,
     createUser,
-    updateUser
+    updateUser,
+    deleteUser
 }

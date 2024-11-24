@@ -60,9 +60,23 @@ async function updateUser(id, user) {
     }
 }
 
+async function deleteUser(id) {
+    try {
+        await prismaClient.users.delete({
+            where: {
+                id: id
+            }
+        })
+    } catch (err) {
+        console.error('Error unable to fetch user:', err)
+        throw err
+    }
+}
+
 module.exports = {
     getAllUsers,
     getUserById,
     createUser,
-    updateUser
+    updateUser,
+    deleteUser
 }
