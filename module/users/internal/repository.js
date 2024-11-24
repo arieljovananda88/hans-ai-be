@@ -68,7 +68,7 @@ async function deleteUser(id) {
             }
         })
     } catch (err) {
-        console.error('Error unable to fetch user:', err)
+        console.error('Error unable to delete user:', err)
         throw err
     }
 }

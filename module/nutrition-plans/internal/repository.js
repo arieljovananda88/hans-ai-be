@@ -78,7 +78,7 @@ async function deleteNutritionPlan(id) {
             }
         })
     } catch (err) {
-        console.error('Error unable to fetch Nutrition Plan:', err)
+        console.error('Error unable to delete Nutrition Plan:', err)
         throw err
     }
 }

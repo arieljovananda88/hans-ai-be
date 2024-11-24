@@ -78,7 +78,7 @@ async function deleteMealLog(id) {
             }
         })
     } catch (err) {
-        console.error('Error unable to fetch Meal Log:', err)
+        console.error('Error unable to delete Meal Log:', err)
         throw err
     }
 }

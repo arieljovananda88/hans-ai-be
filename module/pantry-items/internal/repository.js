@@ -23,7 +23,7 @@ async function getpantryItemById(id) {
 
         return pantryItem
     } catch (err) {
-        console.error('Error unable to fetch pantryItem:', err)
+        console.error('Error unable to fetch Pantry Item:', err)
         throw err
     }
 }
@@ -43,7 +43,7 @@ async function createpantryItem(pantryItem) {
             id: newpantryItem.id
         }
     } catch (err) {
-        console.error('Error unable to add pantryItem:', err)
+        console.error('Error unable to add Pantry Item:', err)
         throw err
     }
 }
@@ -65,7 +65,7 @@ async function updatepantryItem(id, pantryItem) {
             id: id
         }
     } catch (err) {
-        console.error('Error unable to update pantryItem:', err)
+        console.error('Error unable to update Pantry Item:', err)
         throw err
     }
 }
@@ -78,7 +78,7 @@ async function deletepantryItem(id) {
             }
         })
     } catch (err) {
-        console.error('Error unable to fetch pantryItem:', err)
+        console.error('Error unable to delete Pantry Item:', err)
         throw err
     }
 }
