@@ -1,4 +1,5 @@
 const database = require('./repository')
+const bcrypt = require('bcrypt');
 
 async function getUsers(req, res) {
     try {
@@ -44,7 +45,26 @@ async function getUserById(req, res) {
 
 async function createUser(req, res) {
     try {
-        const newUser = await database.createUser(req.body)
+        const user = await database.getUserByEmail(req.body.email)
+        if(user){
+            return res.status(400).json({
+                isSuccess: false,
+                messages: [
+                    "user already exists"
+                ],
+                data:[]
+            })
+        }
+        const { password, ...otherUserData } = req.body;
+        const saltRounds = 10;
+    
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        const newUser = await database.createUser({
+          ...otherUserData,
+          password: hashedPassword,
+        });
+
         res.status(201).json({
             isSuccess: true,
             messages: [],

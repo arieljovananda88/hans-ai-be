@@ -28,6 +28,21 @@ async function getUserById(id) {
     }
 }
 
+async function getUserByEmail(email) {
+    try {
+        const user = await prismaClient.users.findFirst({
+            where: {
+                email: email
+            }
+        })
+
+        return user
+    } catch (err) {
+        console.error('Error unable to fetch user:', err)
+        throw err
+    }
+}
+
 async function createUser(user) {
     try {
         const newUser = await prismaClient.users.create({
@@ -76,6 +91,7 @@ async function deleteUser(id) {
 module.exports = {
     getAllUsers,
     getUserById,
+    getUserByEmail,
     createUser,
     updateUser,
     deleteUser

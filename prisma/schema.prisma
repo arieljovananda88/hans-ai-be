@@ -17,7 +17,6 @@ model Users {
   displayName        String
   email              String             @unique
   password           String
-  dietaryPreferences String
   allergies          String
   GeneratedRecipes   GeneratedRecipes[]
   MealLogs           MealLogs[]
@@ -31,7 +30,7 @@ model PantryItems {
   userId         String
   itemName       String
   quantity       Int
-  experationDate DateTime
+  expirationDate DateTime
   user           Users    @relation(fields: [userId], references: [id])
 }
 
