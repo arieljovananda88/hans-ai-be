@@ -13,16 +13,17 @@ model HealthCheck {
 }
 
 model Users {
-  id                 String             @id @default(uuid())
-  displayName        String
-  email              String             @unique
-  password           String
-  allergies          String
-  GeneratedRecipes   GeneratedRecipes[]
-  MealLogs           MealLogs[]
-  NutritionPlans     NutritionPlans[]
-  PantryItems        PantryItems[]
-  WeightLogs         WeightLogs[]
+  id               String             @id @default(uuid())
+  displayName      String
+  email            String             @unique
+  password         String
+  allergies        String
+  GeneratedRecipes GeneratedRecipes[]
+  MealLogs         MealLogs[]
+  NutritionPlans   NutritionPlans[]
+  PantryItems      PantryItems[]
+  WeightLogs       WeightLogs[]
+  SavedRecipe      SavedRecipes[]
 }
 
 model PantryItems {
@@ -30,7 +31,7 @@ model PantryItems {
   userId         String
   itemName       String
   quantity       Int
-  expirationDate DateTime
+  expirationDate DateTime @default(now())
   user           Users    @relation(fields: [userId], references: [id])
 }
 
@@ -40,8 +41,8 @@ model NutritionPlans {
   caloriesGoal     Float
   startDate        DateTime
   endDate          DateTime
-  GeneratedRecipes GeneratedRecipes[]
   user             Users              @relation(fields: [userId], references: [id])
+  GeneratedRecipes GeneratedRecipes[]
 }
 
 model MealLogs {
@@ -78,4 +79,13 @@ model Recipes {
   instructions String
   calories     Float
   dietaryTags  String
+  SavedRecipe  SavedRecipes[]
+}
+
+model SavedRecipes {
+  id        String   @id @default(uuid())
+  userId    String
+  recipeId  String
+  user      Users    @relation(fields: [userId], references: [id])
+  recipe    Recipes  @relation(fields: [recipeId], references: [id])
 }
