@@ -3,7 +3,7 @@ const database = require('./repository')
 async function getFoodLogs(req, res) {
     try {
         const { month, year } = req.query
-        const foodLogs = await database.getFoodLogsByMonth(month, year)
+        const foodLogs = await database.getFoodLogsByMonth(month, year, req.user.id)
         res.status(200).json({
             isSuccess: true,
             messages: [],

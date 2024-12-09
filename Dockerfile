@@ -6,7 +6,6 @@ WORKDIR /app
 
 # Set environment variables
 ENV PORT 3000
-ENV MODEL_URL "https://storage.googleapis.com/bucket-mlgc-arieljovananda/model.json"
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \

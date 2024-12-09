@@ -3,15 +3,32 @@ const { PrismaClient } = prisma
 
 const prismaClient = new PrismaClient()
 
-async function getFoodLogsByMonth(month, year) {
+async function getFoodLogsByMonth(month, year, userId) {
     const startOfMonth = new Date(year, month - 1, 1)
     const endOfMonth = new Date(year, month, 0)
 
-    return await prismaClient.foodLog.findMany({
+    return await prismaClient.foodLogs.findMany({
         where: {
+            userId: userId,
             date: {
                 gte: startOfMonth,
                 lte: endOfMonth
+            }
+        },
+        include: {
+            FoodLogItems: {
+                include: {
+                    recipe: {
+                        select: {
+                            id: true,
+                            name: true,
+                            protein: true,
+                            carbs: true,
+                            fat: true,
+                            calories: true
+                        }
+                    }
+                }
             }
         },
         orderBy: {
@@ -22,7 +39,7 @@ async function getFoodLogsByMonth(month, year) {
 
 async function getFoodLogById(id) {
     try {
-        const foodLog = await prismaClient.foodLog.findUnique({
+        const foodLog = await prismaClient.foodLogs.findUnique({
             where: {
                 id: id
             },
