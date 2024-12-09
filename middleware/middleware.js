@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 
 function authenticateToken(req, res, next) {
-    const tokenString = req.headers.cookie;
-    const token = tokenString.replace('auth_token=', '');
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.replace('Bearer ', '');
 
     if (!token) {
         return res.status(401).json({
@@ -16,13 +16,14 @@ function authenticateToken(req, res, next) {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded;
         next();
-    }catch(err){
-        return res.status(500).json({
+    } catch (err) {
+        return res.status(403).json({ // Changed to 403 Forbidden for invalid tokens
             isSuccess: false,
-            messages: [err],
+            messages: ["Invalid or expired token"],
             data: []
         });
     }
 }
+
 
 module.exports = authenticateToken;
