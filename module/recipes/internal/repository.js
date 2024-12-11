@@ -36,7 +36,9 @@ async function createRecipe(recipes) {
                 ingredients: recipes.ingredients,
                 instructions: recipes.instructions,
                 calories: recipes.calories,
-                dietaryTags: recipes.dietaryTags
+                protein: recipes.protein,
+                carbs: recipes.protein,
+                fat: recipes.protein,
             }
         })
 
