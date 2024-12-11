@@ -3,9 +3,16 @@ const { PrismaClient } = prisma
 
 const prismaClient = new PrismaClient()
 
-async function getAllRecipes() {
+async function getAllRecipes(searchName) {
     try {
-        const recipes = await prismaClient.recipes.findMany()
+        const recipes = await prismaClient.recipes.findMany({
+            where: {
+                name: {
+                    contains: searchName,
+                    mode: 'insensitive' // This makes the search case-insensitive
+                }
+            }
+        })
         return recipes
     } catch (error) {
         console.error('Error fetching all Recipes:', error);

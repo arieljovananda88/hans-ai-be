@@ -3,7 +3,8 @@ const axios = require('axios');
 
 async function getRecipes(req, res) {
     try {
-        const recipes = await database.getAllRecipes()
+        const searchName = req.query.name || '';
+        const recipes = await database.getAllRecipes(searchName)
         res.status(200).json({
             isSuccess: true,
             messages: [],
