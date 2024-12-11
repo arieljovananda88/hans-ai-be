@@ -12,12 +12,30 @@ model HealthCheck {
   Message String
 }
 
+enum Gender {
+  M
+  F
+}
+
+enum SleepQuality {
+  Poor
+  Fair
+  Good
+  Excellent
+}
+
 model Users {
   id               String             @id @default(uuid())
   displayName      String
   email            String             @unique
   password         String
   allergies        String
+  age              Int
+  gender           Gender
+  targetWeight     Float
+  currentWeight    Float
+  sleepQuality     SleepQuality
+  stressLevel      Int
   NutritionPlans   NutritionPlans[]
   PantryItems      PantryItems[]
   SavedRecipe      SavedRecipes[]
