@@ -24,6 +24,13 @@ enum SleepQuality {
   Excellent
 }
 
+enum PhysicalActivityLevel {
+  Sedentary 
+  LightlyActive @map("Lightly Active")
+  ModeratelyActive @map("Moderately Active")
+  VeryActive @map("Very Active")
+}
+
 model Users {
   id               String             @id @default(uuid())
   displayName      String
@@ -36,10 +43,11 @@ model Users {
   currentWeight    Float
   sleepQuality     SleepQuality
   stressLevel      Int
+  physicalActivityLevel PhysicalActivityLevel
   NutritionPlans   NutritionPlans[]
   PantryItems      PantryItems[]
   SavedRecipe      SavedRecipes[]
-  FoodLogs  FoodLogs[]
+  FoodLogs         FoodLogs[]
 }
 
 model PantryItems {
