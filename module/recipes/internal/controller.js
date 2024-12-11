@@ -1,4 +1,5 @@
 const database = require('./repository')
+const axios = require('axios');
 
 async function getRecipes(req, res) {
     try {
@@ -18,6 +19,42 @@ async function getRecipes(req, res) {
             ],
             data: []
         })
+    }
+}
+
+async function generateRecipe(req, res) {
+    try {
+        const payload = req.body;
+        const response = await axios.post(process.env.AI_SERVICE + '/recipe', payload);
+
+        const recipeText = response.data.recipe;
+        let parsedRecipe;
+        try {
+            parsedRecipe = {
+                title: recipeText.match(/## JUDUL ###\n(.*?)\n/)[1],
+                karbohidrat: parseFloat(recipeText.match(/## KARBOHIDRAT ##\n(.*?)\sgram/)[1]),
+                protein: parseFloat(recipeText.match(/## PROTEIN ##\n(.*?)\sgram/)[1]),
+                lemak: parseFloat(recipeText.match(/## LEMAK ##\n(.*?)\sgram/)[1]),
+                bahan: recipeText.match(/## BAHAN ##\n([\s\S]*?)\n\n## LANGKAH ##/)[1].trim(),
+                langkah: recipeText.match(/## LANGKAH ##\n([\s\S]*)/)[1].trim()
+            };
+        } catch (matchError) {
+            matchError.recipe = recipeText;
+            throw matchError;
+        }
+
+        res.status(200).json({
+            isSuccess: true,
+            messages: [],
+            data: parsedRecipe
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            isSuccess: false,
+            messages: [error.recipe || '', error.message],
+            data: []
+        });
     }
 }
 
@@ -108,5 +145,6 @@ module.exports = {
     getRecipeById,
     createRecipe,
     updateRecipe,
-    deleteRecipe
+    deleteRecipe,
+    generateRecipe
 }

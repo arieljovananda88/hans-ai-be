@@ -59,6 +59,8 @@ model FoodLogs {
   totalCarbs   Float
   totalFat     Float
   totalCalories     Float
+  baseGOal     Float
+  weight       Float
   date         DateTime       @default(now())
   user         Users         @relation(fields: [userId], references: [id])
   FoodLogItems FoodLogItems[] // Add this line
@@ -70,18 +72,24 @@ model Recipes {
   ingredients  String
   instructions String
   calories     Float
-  protein Float
-  carbs   Float
-  fat     Float
-  dietaryTags  String
+  protein      Float
+  carbs        Float
+  fat          Float
   SavedRecipe  SavedRecipes[]
   FoodLogItems FoodLogItems[] // Add this line
+}
+
+enum MealType {
+  Breakfast
+  Lunch
+  Dinner
 }
 
 model FoodLogItems {
   id        String    @id @default(uuid())
   foodLogId String    // Foreign key for FoodLogs
   recipeId  String    // Foreign key for Recipes
+  type      MealType
   foodLog   FoodLogs  @relation(fields: [foodLogId], references: [id])
   recipe    Recipes   @relation(fields: [recipeId], references: [id])
 }
