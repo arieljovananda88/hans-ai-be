@@ -100,7 +100,7 @@ async function saveFoodLog(userId, data) {
             totalProtein: data.total_protein,
             totalCarbs: data.total_carbs,
             totalFat: data.total_fat,
-            baseGoal: data.baseGoal,
+            baseGOal: data.base_goal,
             weight: data.weight,
             totalCalories: data.total_calories,
             date: new Date()
@@ -151,8 +151,9 @@ async function saveFoodLog(userId, data) {
             data: {
                 ...foodLogData,
                 FoodLogItems: {
-                    create: data.food_items.map(recipeId => ({
-                        recipeId: recipeId
+                    create: data.food_items.map(item => ({
+                        recipeId: item.recipeId,
+                        type: item.type
                     }))
                 }
             },
