@@ -18,11 +18,8 @@ model Users {
   email            String             @unique
   password         String
   allergies        String
-  GeneratedRecipes GeneratedRecipes[]
-  MealLogs         MealLogs[]
   NutritionPlans   NutritionPlans[]
   PantryItems      PantryItems[]
-  WeightLogs       WeightLogs[]
   SavedRecipe      SavedRecipes[]
   FoodLogs  FoodLogs[]
 }
@@ -43,34 +40,6 @@ model NutritionPlans {
   startDate        DateTime
   endDate          DateTime
   user             Users              @relation(fields: [userId], references: [id])
-  GeneratedRecipes GeneratedRecipes[]
-}
-
-model MealLogs {
-  id       String   @id @default(uuid())
-  userId   String
-  date     DateTime
-  mealType String
-  calories Float
-  user     Users    @relation(fields: [userId], references: [id])
-}
-
-model WeightLogs {
-  id     String   @id @default(uuid())
-  userId String
-  date   DateTime
-  weight Float
-  user   Users    @relation(fields: [userId], references: [id])
-}
-
-model GeneratedRecipes {
-  id                    String         @id @default(uuid())
-  userId                String
-  recipeId              String
-  generatedDate         DateTime
-  ingredientAdjustments String
-  recipe                NutritionPlans @relation(fields: [recipeId], references: [id])
-  user                  Users          @relation(fields: [userId], references: [id])
 }
 
 model SavedRecipes {
