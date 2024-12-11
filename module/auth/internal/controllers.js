@@ -34,7 +34,7 @@ async function login(req, res) {
         const token = jwt.sign(
             { id: user.id, email: user.email },
             process.env.JWT_SECRET, // Retrieve from .env
-            { expiresIn: '600000' }
+            { expiresIn: '5h' }
         );
 
         res.cookie('auth_token', token, COOKIE_OPTIONS);

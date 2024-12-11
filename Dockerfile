@@ -5,7 +5,10 @@ FROM node:18.17.1
 WORKDIR /app
 
 # Set environment variables
-ENV PORT 3000
+ENV PORT=3000
+ENV DATABASE_URL=postgres://postgres:root@34.101.220.96:5432/hansaidb
+ENV AI_SERVICE=https://hans-ai-ml-620337868347.asia-southeast2.run.app
+ENV JWT_SECRET=jancox
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -25,6 +28,7 @@ RUN npm install
 
 # Copy prisma schema and generate client
 COPY prisma ./prisma/
+RUN npx prisma migrate deploy
 RUN npx prisma generate
 
 # Copy rest of the project files
