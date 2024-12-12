@@ -31,13 +31,16 @@ async function generateRecipe(req, res) {
         const recipeText = response.data.recipe;
         let parsedRecipe;
         try {
+            const regex = /## .* ##\n([\s\S]*?)(?=(##|$))/g;
+            const matches = Array.from(recipeText.matchAll(regex)).map(match => match[1].trim());
+        
             parsedRecipe = {
-                title: recipeText.match(/## JUDUL ###\n(.*?)\n/)[1],
-                karbohidrat: parseFloat(recipeText.match(/## KARBOHIDRAT ##\n(.*?)\sgram/)[1]),
-                protein: parseFloat(recipeText.match(/## PROTEIN ##\n(.*?)\sgram/)[1]),
-                lemak: parseFloat(recipeText.match(/## LEMAK ##\n(.*?)\sgram/)[1]),
-                bahan: recipeText.match(/## BAHAN ##\n([\s\S]*?)\n\n## LANGKAH ##/)[1].trim(),
-                langkah: recipeText.match(/## LANGKAH ##\n([\s\S]*)/)[1].trim()
+                title: recipeText.match(/## .* ###\n(.*?)\n/)?.[1]?.trim() || '',
+                karbohidrat: parseFloat(matches[0].match(/\d+\.\d+/)?.[0]) || 0,
+                protein: parseFloat(matches[1].match(/\d+\.\d+/)?.[0]) || 0,
+                lemak: parseFloat(matches[2].match(/\d+\.\d+/)?.[0]) || 0,
+                bahan: matches[3] || '',
+                langkah: matches[4] || ''
             };
         } catch (matchError) {
             matchError.recipe = recipeText;
@@ -49,7 +52,6 @@ async function generateRecipe(req, res) {
             messages: [],
             data: parsedRecipe
         });
-
     } catch (error) {
         res.status(500).json({
             isSuccess: false,
