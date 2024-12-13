@@ -1,0 +1,820 @@
+{
+	"info": {
+		"_postman_id": "61e26b39-86fb-466f-b735-a3aec855cc8e",
+		"name": "Hans BE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33448138"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/users",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/users/string",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"users",
+								"string"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"displayName\": \"hosea\",\r\n    \"email\": \"hosea@gmail.com\",\r\n    \"password\": \"hosea\",\r\n    \"allergies\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/users",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"displayName\": \"Ujang\",\r\n    \"email\": \"string\",\r\n    \"password\": \"string\",\r\n    \"dietaryPreferences\": \"string\",\r\n    \"allergies\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/users/string",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"users",
+								"string"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/users/284d1ad1-ba6e-4873-818a-92d097774b2b",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"users",
+								"284d1ad1-ba6e-4873-818a-92d097774b2b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"hosea@gmail.com\",\r\n    \"password\": \"hosea\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/auth/login",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pantry Items",
+			"item": [
+				{
+					"name": "Get All Pantry Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/pantry-items",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"pantry-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pantry Item by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/pantry-items/998398c3-7d5a-4c57-8ef2-ff695b4157d5",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"pantry-items",
+								"998398c3-7d5a-4c57-8ef2-ff695b4157d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Pantry Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"string\",\r\n    \"itemName\": \"string\",\r\n    \"quantity\": 1,\r\n    \"experationDate\": \"2024-11-24 21:20:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/pantry-items",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"pantry-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"string\",\r\n    \"itemName\": \"string\",\r\n    \"quantity\": 3,\r\n    \"experationDate\": \"2024-11-24 22:20:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/pantry-items/998398c3-7d5a-4c57-8ef2-ff695b4157d5",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"pantry-items",
+								"998398c3-7d5a-4c57-8ef2-ff695b4157d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Pantry Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/pantry-items/998398c3-7d5a-4c57-8ef2-ff695b4157d5",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"pantry-items",
+								"998398c3-7d5a-4c57-8ef2-ff695b4157d5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Nutrition Plans",
+			"item": [
+				{
+					"name": "Get All Nutrition Plans",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/nutrition-plans",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"nutrition-plans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Nutrition Plan by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/nutrition-plans/e20169bf-d44b-4528-8638-9c2b60104b12",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"nutrition-plans",
+								"e20169bf-d44b-4528-8638-9c2b60104b12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Nutrition Plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"string\",\r\n    \"caloriesGoal\": 300.5,\r\n    \"startDate\": \"2024-11-24 21:20:00\",\r\n    \"endDate\": \"2024-11-24 21:20:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/nutrition-plans",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"nutrition-plans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Nutrition Plan",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"string\",\r\n    \"caloriesGoal\": 250.5,\r\n    \"startDate\": \"2024-11-24 21:20:00\",\r\n    \"endDate\": \"2024-11-24 22:20:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/nutrition-plans/e20169bf-d44b-4528-8638-9c2b60104b12",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"nutrition-plans",
+								"e20169bf-d44b-4528-8638-9c2b60104b12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Nutrition Plan",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/nutrition-plans/e20169bf-d44b-4528-8638-9c2b60104b12",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"nutrition-plans",
+								"e20169bf-d44b-4528-8638-9c2b60104b12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Meal Logs",
+			"item": [
+				{
+					"name": "Get All Meal Logs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/meal-logs",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"meal-logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Meal Log by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/meal-logs/1be57498-6625-45df-81e3-f05fe45df57f",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"meal-logs",
+								"1be57498-6625-45df-81e3-f05fe45df57f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Meal Log",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"string\",\r\n    \"date\": \"2024-11-24 21:20:00\",\r\n    \"mealType\": \"string\",\r\n    \"calories\": 321.123\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/meal-logs",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"meal-logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Meal Log",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"string\",\r\n    \"date\": \"2024-11-24 21:20:00\",\r\n    \"mealType\": \"new meal\",\r\n    \"calories\": 321.321\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/meal-logs/1be57498-6625-45df-81e3-f05fe45df57f",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"meal-logs",
+								"1be57498-6625-45df-81e3-f05fe45df57f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Meal Log",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/meal-logs/1be57498-6625-45df-81e3-f05fe45df57f",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"meal-logs",
+								"1be57498-6625-45df-81e3-f05fe45df57f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recipes",
+			"item": [
+				{
+					"name": "Saved Recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/savedRecipes",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"savedRecipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Recipe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recipeId\": \"8601708d-f758-4fdf-8ea0-4ea94f1a021a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/savedRecipes",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"savedRecipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Recipe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ayam goreng\",\r\n    \"ingredients\": \"ayam & goreng\",\r\n    \"instructions\": \"digoreng masaknya\",\r\n    \"calories\": 20.0,\r\n    \"dietaryTags\": \"berminyak\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/recipes",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate Recipe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQxOTk2Y2UxLTI0MGQtNGYxMy04NjZhLTQwNmI4ODBlZjdiNSIsImVtYWlsIjoiaG9zZWFAZ21haWwuY29tIiwiaWF0IjoxNzMzOTIyMzgzLCJleHAiOjE3MzM5NDAzODN9.w20FEpG4sSX4TeRfUXYQWONnHG58PiP41ymI0KFPByc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"calories\": 0,\r\n    \"ingredients\": [\"ayanm\", \"kunyit\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/recipes/generate",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"recipes",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Jovan",
+			"item": [
+				{
+					"name": "createuser Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"arieljovananda@gmail.com\",\n    \"password\": \"string\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get food logs by month and year Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhODNhN2E3LTczOTMtNGNkOC1hMmYwLTQ3MjAyZDEwZWI4NyIsImVtYWlsIjoiYXJpZWxqb3ZhbmFuZGFAZ21haWwuY29tIiwiaWF0IjoxNzMzOTE2MzczLCJleHAiOjE3MzM5MTY5NzN9.CHBLKTvjHjFKUEqasGk2MLiD9jWZpDxJ6G9I2N9ubys",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"log_title\": \"example\",\n    \"description\": \"example\",\n    \"total_protein\": 100.0,\n    \"total_carbs\": 100.0,\n    \"total_fat\": 100.0,\n    \"total_calories\": 100.0,\n    \"food_items\": [\n        \"7a657934-6d37-4cd2-89f0-324311bca939\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/food-logs?month=12&year=2024",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"food-logs"
+							],
+							"query": [
+								{
+									"key": "month",
+									"value": "12"
+								},
+								{
+									"key": "year",
+									"value": "2024"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get food logs by id (detail food log) Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhODNhN2E3LTczOTMtNGNkOC1hMmYwLTQ3MjAyZDEwZWI4NyIsImVtYWlsIjoiYXJpZWxqb3ZhbmFuZGFAZ21haWwuY29tIiwiaWF0IjoxNzMzOTE2MzczLCJleHAiOjE3MzM5MTY5NzN9.CHBLKTvjHjFKUEqasGk2MLiD9jWZpDxJ6G9I2N9ubys",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"log_title\": \"example\",\n    \"description\": \"example\",\n    \"total_protein\": 100.0,\n    \"total_carbs\": 100.0,\n    \"total_fat\": 100.0,\n    \"total_calories\": 100.0,\n    \"food_items\": [\n        \"7a657934-6d37-4cd2-89f0-324311bca939\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/food-logs/b3282a0e-cab0-4f66-ace9-cbae944d8209",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"food-logs",
+								"b3282a0e-cab0-4f66-ace9-cbae944d8209"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save or update food log Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhODNhN2E3LTczOTMtNGNkOC1hMmYwLTQ3MjAyZDEwZWI4NyIsImVtYWlsIjoiYXJpZWxqb3ZhbmFuZGFAZ21haWwuY29tIiwiaWF0IjoxNzMzOTE2MzczLCJleHAiOjE3MzM5MTY5NzN9.CHBLKTvjHjFKUEqasGk2MLiD9jWZpDxJ6G9I2N9ubys",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"log_title\": \"example\",\n    \"description\": \"example\",\n    \"total_protein\": 100.0,\n    \"total_carbs\": 100.0,\n    \"total_fat\": 100.0,\n    \"total_calories\": 100.0,\n    \"food_items\": [\n        \"7a657934-6d37-4cd2-89f0-324311bca939\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/food-logs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"food-logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get calorie intake prediction Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhODNhN2E3LTczOTMtNGNkOC1hMmYwLTQ3MjAyZDEwZWI4NyIsImVtYWlsIjoiYXJpZWxqb3ZhbmFuZGFAZ21haWwuY29tIiwiaWF0IjoxNzMzOTE1NzMwLCJleHAiOjE3MzM5MTYzMzB9.tPK0XxHYthJJeew0b9cksokBuemId6xc6Ew6_yWhOUY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"age\": 20,\n    \"gender\": \"F\",\n    \"dailyCaloriesConsumed\": 1700,\n    \"weightChangeInLbs\": 5.0,\n    \"durationInWeeks\": 10,\n    \"physicalActivityLevel\": \"Sedentary\",\n    \"sleepQuality\": \"Excellent\",\n    \"stressLevel\": 3,\n    \"currentWeightInLbs\": 101,\n    \"caloricAdjustment\": 250\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/predict/calorie-intake",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"predict",
+								"calorie-intake"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
